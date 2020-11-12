@@ -1,0 +1,114 @@
+<section th:fragment="navbar" class="menu menu1 cid-sdGe5HKeWB" once="menu" id="menu1-0" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+
+                <span class="navbar-caption-wrap"><a th:if="${session.usuariosession != null}"
+                        class="navbar-caption text-secondary display-7" th:href="@{/logueado}">Tu
+                        Comunidad<br></a></span>
+                <span th:if="${session.usuariosession == null}" class="navbar-caption-wrap"><a 
+                        class="navbar-caption text-secondary display-7" th:href="@{/login}">Tu
+                        Comunidad<br></a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div th:if="${session.usuariosession != null}" class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
+                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4"
+                            th:href="@{/usuario_lista/__${session.usuariosession.mail}__}" sec:authorize="hasAnyRole('SUPERADMIN','ADMIN')">
+                            Consulta usuario</a></li>
+                    <li class="nav-item dropdown"><a class="nav-link link text-black dropdown-toggle display-4" href="#"
+                            data-toggle="dropdown-submenu" aria-expanded="true" sec:authorize="hasRole('ADMIN')">Vivienda</a>
+                        <div class="dropdown-menu"><a class="text-black dropdown-item text-primary display-4"
+                                th:href="@{/viviendas-crear/__${session.usuariosession.idcomunidad}__}" sec:authorize="hasRole('ADMIN')">Crear
+                                Vivienda</a><a class="text-black dropdown-item text-primary display-4"
+                                th:href="@{/viviendas/mostrar/__${session.usuariosession.idcomunidad}__}" sec:authorize="hasRole('ADMIN')">
+                                Ver viviendas</a></div>
+                    </li>
+                    <li class="nav-item dropdown"><a class="nav-link link text-black dropdown-toggle display-4" href="#"
+                            data-toggle="dropdown-submenu" aria-expanded="true" sec:authorize="hasRole('SUPERADMIN')">Comunidad</a>
+                        <div class="dropdown-menu"><a class="text-black dropdown-item text-primary display-4"
+                                th:href="@{/comunidad-crear}" sec:authorize="hasRole('SUPERADMIN')">Crear Comunidad</a><a
+                                class="text-black dropdown-item text-primary display-4" th:href="@{/comunidad/mostrar}" sec:authorize="hasRole('SUPERADMIN')">
+                                Controlar Comunidad</a></div>
+                    </li>
+                    <li th:if="${session.usuariosession != null}" class="nav-item dropdown"><a
+                            class="nav-link link text-black dropdown-toggle display-4" href="#"
+                            data-toggle="dropdown-submenu" aria-expanded="false" sec:authorize="hasAnyRole('ADMIN','REGULAR')">Proyectos</a>
+                        <div class="dropdown-menu"><a class="text-black dropdown-item text-primary display-4"
+                                th:href="@{/proyecto/__${session.usuariosession.idcomunidad}__/crear}" sec:authorize="hasRole('ADMIN')">Crear</a><a
+                                class="text-black dropdown-item text-primary display-4"
+                                th:href="@{/proyecto/__${session.usuariosession.idcomunidad}__/editar}" sec:authorize="hasRole('ADMIN')">Editar</a><a
+                                class="text-black dropdown-item text-primary display-4" href="/votacion/votarProyecto" sec:authorize="hasAnyRole('ADMIN','REGULAR')">Votar
+                                proyectos</a><a class="text-black dropdown-item text-primary display-4" 
+                                th:href="@{/proyecto/__${session.usuariosession.idcomunidad}__/mostrar}" sec:authorize="hasAnyRole('ADMIN','REGULAR')">Ver
+                                    proyectos</a></div>
+
+                    </li>
+                    <li class="nav-item dropdown"><a class="nav-link link text-black dropdown-toggle display-4" href="#"
+                            data-toggle="dropdown-submenu" aria-expanded="false" sec:authorize="hasAnyRole('ADMIN','REGULAR')">
+                            Hitos</a>
+                        <div class="dropdown-menu"><a class="text-black dropdown-item display-4"
+                                th:href="@{/hitos/crear/__${session.usuariosession.idcomunidad}__}" sec:authorize="hasRole('ADMIN')">Crear</a>
+                              <!--  <a class="text-black dropdown-item display-4"
+                                th:href="@{/hitos/editar/__${session.usuariosession.idcomunidad}__}" sec:authorize="hasRole('ADMIN')">-->
+                                <a class="text-black dropdown-item display-4"
+                                th:href="@{/hitos/mostrar}" sec:authorize="hasAnyRole('ADMIN','REGULAR')">Ver hitos</a></div>
+                    </li>
+                    <li class="nav-item dropdown"><a class="nav-link link text-black dropdown-toggle display-4" href="#"
+                            data-toggle="dropdown-submenu" aria-expanded="false" sec:authorize="hasAnyRole('ADMIN','REGULAR')">
+                            Oficios</a>
+                        <div class="dropdown-menu"><a class="text-black dropdown-item text-primary display-4"
+                                th:href="@{/oficio/__${session.usuariosession.idcomunidad}__/}" sec:authorize="hasAnyRole('ADMIN','REGULAR')">Lista</a><a
+                                class="text-black dropdown-item text-primary display-4"
+                                th:href="@{/oficio/__${session.usuariosession.idcomunidad}__/crear}" sec:authorize="hasAnyRole('ADMIN','REGULAR')">Crear</a></div>
+                    </li>
+                    <li class="nav-item dropdown"><a class="nav-link link text-black dropdown-toggle display-4" href="#"
+                            data-toggle="dropdown-submenu" aria-expanded="false"
+                            th:if="${session.usuariosession != null}"
+                            th:text="${session.usuariosession.nombre + ' ' + session.usuariosession.apellido}"><br></a>
+                        <div class="dropdown-menu"><a class="text-black dropdown-item text-primary display-4"
+                                th:href="@{/registro/editarPerfil/__${session.usuariosession.mail}__}" sec:authorize="hasAnyRole('ADMIN','REGULAR')">Editar Perfil</a>
+                                
+                                <a class="text-black dropdown-item text-primary display-4" th:href="@{/usuario_lista/usuario_ver/__${session.usuariosession.mail}__}">Ver Perfil </a>
+                           
+                                <a th:if="${session.usuariosession != null}"
+                                class="nav-link link text-black text-primary display-4" th:href="@{/logout}"
+                                id="logout">Logout</a>
+                            <a th:if="${session.usuariosession == null}"
+                                class="nav-link link text-black text-primary display-4" th:href="@{/login}"
+                                id="login">Login</a>
+                        </div>
+
+                    </li>
+
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+</section>
+
+
+
+<div th:fragment="assets">
+    <link rel="stylesheet" href="/assets/web/assets/mobirise-icons/mobirise-icons.css">
+    <link rel="stylesheet" href="/assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/assets/tether/tether.min.css">
+    <link rel="stylesheet" href="/assets/dropdown/css/style.css">
+    <link rel="stylesheet" href="/assets/socicon/css/styles.css">
+    <link rel="stylesheet" href="/assets/theme/css/style.css">
+    <link rel="preload" as="style" href="/assets/mobirise/css/mbr-additional.css">
+    <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
+</div>

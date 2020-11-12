@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v5.2.0, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/iconoprincipal-128x128.png" type="image/x-icon">
+  <meta name="description" content="Web Page Builder Description">
+
+
+  <title>Usuarios</title>
+
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="/assets/tether/tether.min.css">
+  <link rel="stylesheet" href="/assets/datatables/data-tables.bootstrap4.min.css">
+  <link rel="stylesheet" href="/assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="/assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="/assets/theme/css/style.css">
+  <link rel="preload" as="style" href="/assets/mobirise/css/mbr-additional.css">
+  <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
+
+
+</head>
+
+<body>
+
+  <section class="menu menu1 cid-sdGe5HKeWB" once="menu" id="menu1-1o">
+
+    <nav th:replace="navbar::navbar"></nav>
+    <p th:if="${error != null}" th:text="${error}" style="color:red"></p>
+
+
+  </section>
+
+  <section th:if="${listar != null}" class="section-table cid-sdSbIFAQ65" id="table1-1l">
+
+
+
+    <div class="container container-table">
+      <h2 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2">
+        Lista de usuarios</h2>
+      <h3 class="mbr-section-subtitle mbr-fonts-style align-center pb-5 mbr-light display-5">
+        Aquí podrá encontrar toda la información de los usuarios de la comunidad.
+      </h3>
+      <div class="table-wrapper">
+        <!--div class="container">
+          <div class="row search">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+              <div class="dataTables_filter">
+                <label class="searchInfo mbr-fonts-style display-7">Buscar:</label>
+                <input class="form-control input-sm" disabled="">
+              </div>
+            </div>
+          </div>
+        </div-->
+
+        <div class="container scroll" sec:authorize="hasRole('ADMIN')">
+          <table class="table isSearch" cellspacing="0" data-empty="No matching records found">
+            <thead>
+              <tr class="head-item mbr-fonts-style display-7">
+                <th scope="col"> Mail </th>
+                <th scope="col" style="text-align: center"> Nombre </th>
+                <th scope="col" style="text-align: center"> Apellido </th>
+                <th scope="col" style="text-align: center"> Vivienda </th>
+                <th scope="col" style="text-align: center"> Comunidad </th>
+                <th scope="col" style="text-align: center"> Teléfono </th>
+                <th scope="col" style="text-align: center"> Rol </th>
+                <th scope="col" style="text-align: center"> Fecha de alta </th>
+
+
+                <th scope="col" style="text-align: center"> Mas Info </th>
+                <th scope="col" style="text-align: center"> Eliminar </th>
+                <th scope="col" style="text-align: center" sec:authorize="hasRole('SUPERADMIN')"> Upgrade </th>
+
+                <!--Puede ser que el class vaya en todos los th-->
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr th:each="usuario :${usuarios}">
+                <td class="body-item mbr-fonts-style display-7" style="text-align: center"><span
+                    th:text="${usuario.mail}"></span></td>
+                <td class="body-item mbr-fonts-style display-7" style="text-align: center"><span
+                    th:text="${usuario.nombre}"></span></td>
+                <td class="body-item mbr-fonts-style display-7" style="text-align: center"><span
+                    th:text="${usuario.apellido}"></span></td>
+                <td class="body-item mbr-fonts-style display-7" style="text-align: center"><span
+                    th:text="${usuario.vivienda.direccion}"></span></td>
+                <td class="body-item mbr-fonts-style display-7" style="text-align: center"><span
+                    th:text="${usuario.vivienda.comunidad.nombre}"></span></td>
+                <td class="body-item mbr-fonts-style display-7" style="text-align: center"><span
+                    th:text="${usuario.telefono}"></span></td>
+                <td class="body-item mbr-fonts-style display-7" style="text-align: center"><span
+                    th:text="${usuario.tipo}"></span></td>
+                <td class="body-item mbr-fonts-style display-7" style="text-align: center"><span
+                    th:text="${usuario.fechaDeAlta}"></span></td>
+
+
+
+                <td style="text-align: center"><a th:href="@{/usuario_lista/usuario_ver/__${usuario.mail}__}"><i
+                      class="fas fa-share"></i></a></td>
+
+                <td style="text-align: center;"><a th:href="@{/usuario_lista/usuario_eliminar/__${usuario.mail}__}"><i
+                      class="fas fa-trash"></i></a></td>
+
+              </tr>
+
+              <!--Puede ser que cada una, antes del td, necesite llevar tr-->
+
+            </tbody>
+          </table>
+        </div>
+
+
+
+
+
+
+
+        <div class="container scroll" sec:authorize="hasRole('SUPERADMIN')">
+          <table class="table isSearch" cellspacing="0" data-empty="No matching records found">
+            <thead>
+              <tr class="head-item mbr-fonts-style display-7">
+                <th scope="col"> Mail </th>
+                <th scope="col" style="text-align: center"> Nombre </th>
+                <th scope="col" style="text-align: center"> Apellido </th>
+                <th scope="col" style="text-align: center"> Vivienda </th>
+                <th scope="col" style="text-align: center"> Comunidad </th>
+                <th scope="col" style="text-align: center"> Teléfono </th>
+                <th scope="col" style="text-align: center"> Rol </th>
+                <th scope="col" style="text-align: center"> Fecha de alta </th>
+
+
+                <th scope="col" style="text-align: center"> Mas Info </th>
+                <th scope="col" style="text-align: center"> Eliminar </th>
+                <th scope="col" style="text-align: center"> Upgrade </th>
+
+                <!--Puede ser que el class vaya en todos los th-->
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr th:each="usuario :${usuariosTodos}">
+                <td class="body-item mbr-fonts-style display-7" style="text-align: center"><span
+                    th:text="${usuario.mail}"></span></td>
+                <td class="body-item mbr-fonts-style display-7" style="text-align: center"><span
+                    th:text="${usuario.nombre}"></span></td>
+                <td class="body-item mbr-fonts-style display-7" style="text-align: center"><span
+                    th:text="${usuario.apellido}"></span></td>
+                <td class="body-item mbr-fonts-style display-7" style="text-align: center"><span
+                    th:text="${usuario.vivienda.direccion}"></span></td>
+                <td class="body-item mbr-fonts-style display-7" style="text-align: center"><span
+                    th:text="${usuario.vivienda.comunidad.nombre}"></span></td>
+                <td class="body-item mbr-fonts-style display-7" style="text-align: center"><span
+                    th:text="${usuario.telefono}"></span></td>
+                <td class="body-item mbr-fonts-style display-7" style="text-align: center"><span
+                    th:text="${usuario.tipo}"></span></td>
+                <td class="body-item mbr-fonts-style display-7" style="text-align: center"><span
+                    th:text="${usuario.fechaDeAlta}"></span></td>
+
+
+
+                <td style="text-align: center"><a th:href="${'/usuario_lista/usuario_ver/' + usuario.mail}"><i
+                      class="fas fa-share"></i></a></td>
+
+                <td style="text-align: center;"><a th:href="${'/usuario_lista/usuario_eliminar/' + usuario.mail}"><i
+                      class="fas fa-trash"></i></a></td>
+
+                <td style="text-align: center;"><a th:href="${'/usuario_lista/usuario_update/' + usuario.mail}"><i
+                      class="fas fa-share"></i></a></td>
+              </tr>
+
+              <!--Puede ser que cada una, antes del td, necesite llevar tr-->
+
+            </tbody>
+          </table>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </section>
+
+  <section th:if="${ver != null}" class="testimonials1 cid-sdRWzUxCfW" id="testimonials1-y">
+    <div class="container">
+
+      <div class="row align-items-center">
+        <div class="col-12 col-md-6">
+          <div class="image-wrapper" th:if="${usuario.foto.id != null}">
+            <img th:src="@{/foto/load/__${usuario.foto.id}__}" th:alt="${usuario.foto.id}"
+              th:title="${usuario.foto.nombre}">
+          </div>
+        </div>
+        <div class="col-12 col-md">
+          <div class="text-wrapper">
+            <strong><label>NOMBRE: </label></strong>
+            <p class="mbr-text mbr-fonts-style mb-4 display-7" th:text="${usuario.nombre} + ' ' + ${usuario.apellido}">
+            </p>
+            <strong><label>MAIL: </label></strong>
+            <p class="mbr-text mbr-fonts-style mb-4 display-7" th:text="${usuario.mail}"></p>
+            <strong><label>COMUNIDAD: </label></strong>
+            <p class="mbr-text mbr-fonts-style mb-4 display-7" th:text="${comunidad.nombre}"></p>
+            <strong><label>VIVIENDA: </label></strong>
+            <p class="mbr-text mbr-fonts-style mb-4 display-7" th:text="${usuario.vivienda.direccion}"></p>
+            <strong><label>TELEFONO: </label></strong>
+            <p class="mbr-text mbr-fonts-style mb-4 display-7" th:text="${usuario.telefono}"></p>
+            <strong><label>ROL: </label></strong>
+            <p class="mbr-text mbr-fonts-style mb-4 display-7" th:text="${usuario.tipo}">
+            </p>
+            <strong><label>FECHA DE ALTA: </label></strong>
+            <p class="mbr-text mbr-fonts-style mb-4 display-7" th:text="${usuario.fechaDeAlta}"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <a class="btn btn-secondary display-4" th:href="@{/logueado}">Volver
+        !</a></div>
+  </section>
+
+
+
+
+
+
+
+  <section class="contacts4 cid-sdSyuoiMpf" id="contacts4-29" style="margin-top: 3cm;">
+
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="text-content col-12 col-md-6">
+          <h2 class="mbr-section-title mbr-fonts-style display-2">
+            <strong>Seguinos en las redes!</strong></h2>
+          <p class="mbr-text mbr-fonts-style display-7">
+            <strong>Contacto</strong>:<br><strong>Dirección</strong>:<br><strong>Argentina/Chile<br></strong><br><br>
+          </p>
+        </div>
+        <div class="icons d-flex align-items-center col-12 col-md-6 justify-content-end mt-md-0 mt-2 flex-wrap">
+          <a href="https://twitter.com/mobirise" target="_blank">
+            <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
+          </a>
+          <a href="https://www.facebook.com/pages/Mobirise/1616226671953247" target="_blank">
+            <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+          </a>
+          <a href="https://www.youtube.com/c/mobirise" target="_blank">
+            <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
+          </a>
+          <a href="https://instagram.com/mobirise" target="_blank">
+            <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section
+    style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;">
+    <a href="https://mobirise.site/w" style="flex: 1 1; height: 3rem; padding-left: 1rem;"></a>
+    <!--p style="flex: 0 0 auto; margin:0; padding-right:1rem;">Web page <a href="https://mobirise.site/f"
+        style="color:#aaa;">was created</a> with Mobirise</p-->
+  </section>
+  <script src="/assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="/assets/popper/popper.min.js"></script>
+  <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/assets/tether/tether.min.js"></script>
+  <script src="/assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="/assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="/assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="/assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="/assets/sociallikes/social-likes.js"></script>
+  <script src="/assets/theme/js/script.js"></script>
+  <script src="/assets/formoid/formoid.min.js"></script>
+  <script src="https://kit.fontawesome.com/893bee3809.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

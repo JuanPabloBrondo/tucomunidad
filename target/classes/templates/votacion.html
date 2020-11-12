@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <!-- Site made with Mobirise Website Builder v5.2.0, https://mobirise.com -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v5.2.0, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="assets/images/iconoprincipal-128x128.png" type="image/x-icon">
+    <meta name="description" content="">
+
+
+    <title>Votacion</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/assets/tether/tether.min.css">
+    <link rel="stylesheet" href="/assets/dropdown/css/style.css">
+    <link rel="stylesheet" href="/assets/socicon/css/styles.css">
+    <link rel="stylesheet" href="/assets/theme/css/style.css">
+    <link rel="preload" as="style" href="/assets/mobirise/css/mbr-additional.css">
+    <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
+    <link rel="stylesheet" href="/assets/estilosPropios/estilo.css">
+
+</head>
+
+<body>
+
+
+
+    
+    <section class="menu menu1 cid-sdGe5HKeWB" once="menu" id="menu1-10">
+
+        <nav th:replace="navbar::navbar"></nav>
+
+
+
+
+    </section>
+
+    <section class="features13 cid-sdSgMOpyQW" id="features13-1x">
+        <h2 class="mbr-section-title pb-3 mbr-fonts-style align-center display-2">
+            Estos proyectos te pueden interesar. Echa un vistazo</h2>
+        <div class="container">
+
+
+            <div class="media-container-row flow">
+                <div class="card col-12 col-md-6 align-center col-lg-4 cartasBotton" th:each="Proyecto : ${listaNoVotados}">
+                    <div class="card-wrap tamanioMaxCartas">
+                        <div class="card-img tamanioMaxCartas">
+                            <img th:src="@{/foto/load/__${Proyecto.fotoInicio.id}__}" alt="" title="">
+                        </div>
+                        <div class="card-box p-5">
+                            <h4 th:text="${Proyecto.nombre}"
+                                class="card-title py-2 mbr-fonts-style align-center mbr-white display-5">
+
+                            </h4>
+                            <div class="row justify-content-center">
+                                <p><strong>Responsable:&nbsp; </strong></p>
+                                <p class="mbr-text mbr-fonts-style mbr-white display-7"
+                                    th:text="${Proyecto.responsable.nombre}"></p>
+                            </div>
+                            <div class="row justify-content-center">
+                                <p><strong>Inicio:&nbsp; </strong></p>
+                                <p class="mbr-text mbr-fonts-style mbr-white display-7"
+                                    th:text="${Proyecto.fechaInicio}"></p>
+                            </div>
+                            <div class="row justify-content-center">
+                                <p><strong>Fin:&nbsp; </strong></p>
+                                <p class="mbr-text mbr-fonts-style mbr-white display-7" th:text="${Proyecto.fechaFin}">
+                                </p>
+                            </div>
+                            <div class="row justify-content-center">
+                                <p><strong>Presupuesto:&nbsp; </strong></p>
+                                <p class="mbr-text mbr-fonts-style mbr-white display-7"
+                                    th:text="${Proyecto.presupuesto}"></p>
+                            </div>
+                            <div class="row justify-content-center">
+                                <p><strong>Estado:&nbsp; </strong></p>
+                                <p class="mbr-text mbr-fonts-style mbr-white display-7" th:text="${Proyecto.estado}">
+                                </p>
+                            </div>
+
+                            <!--<button id="" type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#exampleModal" data-id="1234564678">
+                                Votar
+                            </button>
+                            <a title="votar" class="btn btn-primary btn-sm"
+                                th:href="@{/votacion/votar/${__Proyecto.id__}}">Votar</a>
+                            <a class="btn btn-primary" href="#" role="button">Link</a>
+                        -->
+
+                        </div>
+                        <div>
+                            <a class="btn btn-primary-outline display-4"
+                                th:href="@{/votacion/votar/__${Proyecto.id}__}">Votar</a>
+                        </div>
+
+                        <!--Inicio Modal
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Votar proyecto</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form th:action="@{/votacion/proyectoVotado}" method="POST">
+                                            <section class="info1 cid-sdRYasNCkW " id="info1-12">
+                                                <div class="align-center container">
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-12 col-lg-8 ">
+                                                            <h3 class="mbr-section-title mb-4 mbr-fonts-style display-1"
+                                                                id="bookId">
+                                                                <strong th:text="${Proyecto.nombre}"></strong>
+                                                            </h3>
+                                                            <div class="mbr-section-btn"><a class="btn btn-white display-4"
+                                                            th:href="@{/proyecto/__${session.usuariosession.idcomunidad}__/masinfo/__${Proyecto.id}__}">+Info</a>
+                                                    </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                            <section class="image4 cid-sdRYiQV1FH votacionClase" id="image4-13">
+                                                <div class="container">
+                                                    <div class="cc-selector">
+                                                        <input id="positivo" type="radio" name="eleccion"
+                                                            th:value="${positivo}" />
+                                                        <label class="voto-cc positivo" for="positivo"></label>
+                                                        <input id="negativo" type="radio" name="eleccion"
+                                                            th:value="${negativo}" />
+                                                        <label class="voto-cc negativo" for="negativo"></label>
+                                                        <input type="text" th:value="${Proyecto.id}" name="idProyecto" hidden>
+                                                    </div>
+                                                    <br>
+                                                    <div class="col-lg-11">
+                                                        <div class="votarBoton">
+                                                            <div class="col-xs-4">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                            <section class="countdown1 cid-sdRYoDeBJo" id="countdown1-14">
+                                                <div class="container">
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-lg-8">
+                                                            <h3
+                                                                class="mbr-section-title mb-5 align-center mbr-fonts-style display-2">
+                                                                <strong>Fecha de finalizacion:</strong>
+                                                            </h3>
+                                                            <h2 th:text="${Proyecto.fechaFin}" class=" align-center"></h2>
+                                                            <h3
+                                                                class="mbr-section-title mb-5 align-center mbr-fonts-style display-2">
+                                                                <strong>La votacion finaliza en:</strong>
+                                                                <div class="countdown-cont align-center mb-5">
+                                                                    <div class="daysCountdown col-xs-3 col-sm-3 col-md-3"
+                                                                        title="Days"></div>
+                                                                    <div class="hoursCountdown col-xs-3 col-sm-3 col-md-3"
+                                                                        title="Hours"></div>
+                                                                    <div class="minutesCountdown col-xs-3 col-sm-3 col-md-3"
+                                                                        title="Minutes"></div>
+                                                                    <div class="secondsCountdown col-xs-3 col-sm-3 col-md-3"
+                                                                        title="Seconds"></div>
+                                                                    <div class="countdown" th:data-due-date="${Proyecto.fechaFin}">
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary btn-sm"
+                                                    data-dismiss="modal">cerrar</button>
+                                                <button type="submit" class="btn btn-primary btn-sm">Votar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        Fin modal-->
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    
+    <section class="contacts4 cid-sdSyuoiMpf" id="contacts4-29" style="margin-top: 3cm;">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="text-content col-12 col-md-6">
+                    <h2 class="mbr-section-title mbr-fonts-style display-2">
+                        <strong>Seguinos en las redes!</strong></h2>
+                    <p class="mbr-text mbr-fonts-style display-7">
+                        <strong>Contacto</strong>:<br><strong>Dirección</strong>:<br><strong>Argentina/Chile<br></strong><br><br>
+                    </p>
+                </div>
+                <div class="icons d-flex align-items-center col-12 col-md-6 justify-content-end mt-md-0 mt-2 flex-wrap">
+                    <a href="https://twitter.com/mobirise" target="_blank">
+                        <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
+                    </a>
+                    <a href="https://www.facebook.com/pages/Mobirise/1616226671953247" target="_blank">
+                        <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+                    </a>
+                    <a href="https://www.youtube.com/c/mobirise" target="_blank">
+                        <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
+                    </a>
+                    <a href="https://instagram.com/mobirise" target="_blank">
+                        <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="/assets/web/assets/jquery/jquery.min.js"></script>
+    <script src="/assets/popper/popper.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/tether/tether.min.js"></script>
+    <script src="/assets/smoothscroll/smooth-scroll.js"></script>
+    <script src="/assets/dropdown/js/nav-dropdown.js"></script>
+    <script src="/assets/dropdown/js/navbar-dropdown.js"></script>
+    <script src="/assets/touchswipe/jquery.touch-swipe.min.js"></script>
+    <script src="/assets/ytplayer/jquery.mb.ytplayer.min.js"></script>
+    <script src="/assets/vimeoplayer/jquery.mb.vimeo_player.js"></script>
+    <script src="/assets/bootstrapcarouselswipe/bootstrap-carousel-swipe.js"></script>
+    <script src="/assets/as-pie-progress/jquery-as-pie-progress.min.js"></script>
+    <script src="/assets/datatables/jquery.data-tables.min.js"></script>
+    <script src="assets/datatables/data-tables.bootstrap4.min.js"></script>
+    <script src="assets/theme/js/script.js"></script>
+    <script src="/assets/datepicker/jquery.datetimepicker.full.js"></script>
+    <script src="/assets/datepicker/jquery.datetimepicker.min.js"></script>
+    <script src="/assets/countdown/jquery.countdown.min.js"></script>
+
+</body>
+
+</html>

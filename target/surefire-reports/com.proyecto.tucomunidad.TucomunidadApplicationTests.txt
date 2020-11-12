@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.proyecto.tucomunidad.TucomunidadApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.726 s - in com.proyecto.tucomunidad.TucomunidadApplicationTests
