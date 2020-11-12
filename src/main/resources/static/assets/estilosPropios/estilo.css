@@ -1,0 +1,101 @@
+.cc-selector input{
+   margin:0;padding:0;
+   -webkit-appearance:none;
+      -moz-appearance:none;
+           appearance:none;
+}
+
+.cc-selector-2 input{
+   position:absolute;
+   z-index:999;
+}
+
+.positivo{
+   background-image:url(/assets/images/pulgar-arriba.png);
+   
+}
+.negativo{
+   background-image:url(/assets/images/pulgar-hacia-abajo.png);
+   
+}
+
+#positivo {
+   padding-right: 70px;
+}
+
+#negativo {
+   padding-left: 70px;
+}
+
+.cc-selector-2 input:active +.voto-cc, .cc-selector input:active +.voto-cc{opacity: .9;}
+.cc-selector-2 input:checked +.voto-cc, .cc-selector input:checked +.voto-cc{
+   -webkit-filter: none;
+      -moz-filter: none;
+           filter: none;
+}
+.voto-cc{
+   cursor:pointer;
+   background-size:contain;
+   background-repeat:no-repeat;
+   display:inline-block;
+   width:350px;height:300px;
+   -webkit-transition: all 100ms ease-in;
+      -moz-transition: all 100ms ease-in;
+           transition: all 100ms ease-in;
+   -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+      -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+           filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+.voto-cc:hover{
+   -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+      -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+           filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+/* Extras */
+a:visited{color:#888}
+a{color:#444;text-decoration:none;}
+p{margin-bottom:.3em;}
+
+.votarBoton {
+   padding-top: 30px;
+}
+
+.votacionClase {
+   padding-top: 1rem!Important;
+   text-align: -webkit-center;
+}
+
+#alinearTexto {
+   padding-right: 190px!Important;
+}
+
+.volver{
+   padding-top: 20px;
+   
+}
+.volverBoton {
+   border-radius: 15px;
+}
+
+
+.flow{
+   flex-flow: wrap!Important;
+}
+
+.cartasBotton{
+   padding-bottom: 5rem!Important;
+}
+
+
+.vivienda {
+   display: block!Important;
+}
+
+.tamanioMaxCartas{
+   max-width: 350px;
+    max-height: 337.50px;
+}
+
+
+

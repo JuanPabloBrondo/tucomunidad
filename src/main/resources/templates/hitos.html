@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <!-- Site made with Mobirise Website Builder v5.2.0, https://mobirise.com -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v5.2.0, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="assets/images/iconoprincipal-128x128.png" type="image/x-icon">
+    <meta name="description" content="Toda la informacion de proyectos">
+
+
+    <title>Hitos</title>
+    <link rel="stylesheet" href="/assets/web/assets/mobirise-icons/mobirise-icons.css">
+    <link rel="stylesheet" href="/assets/web/assets/mobirise-icons2/mobirise2.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/assets/tether/tether.min.css">
+    <link rel="stylesheet" href="/assets/dropdown/css/style.css">
+    <link rel="stylesheet" href="/assets/as-pie-progress/css/progress.min.css">
+    <link rel="stylesheet" href="/assets/datatables/data-tables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/assets/socicon/css/styles.css">
+    <link rel="stylesheet" href="/assets/theme/css/style.css">
+    <link rel="preload" as="style" href="/assets/mobirise/css/mbr-additional.css">
+    <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
+
+    <script src="https://kit.fontawesome.com/893bee3809.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+
+    <section th:replace="navbar::navbar"></section>
+
+
+
+
+    <section class="mbr-section content8 cid-sdGCYbs5yA" id="content8-s" sec:authorize="hasAnyRole('SUPERADMIN','ADMIN')">
+        <div class="container">
+            <div class="media-container-row title">
+                <div class="col-12 col-md-8">
+                    <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4"
+                            th:href="@{/hitos/crear/__${session.usuariosession.idcomunidad}__}">Crear Hitos</a>
+                        <a class="btn btn-black-outline display-4"
+                            th:href="@{/hitos/__${session.usuariosession.idcomunidad}__/editar/__${session.usuariosession.mail}__}">Editar
+                            Hitos<br></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+
+    <section th:if="${verhitos!=null}" class="carousel slide cid-sdGtYgk36Q" data-interval="false" id="slider1-o">
+
+
+        <div th:if="${hito1!=null}" class="full-screen">
+            <div class="mbr-slider slide carousel" data-keyboard="false" data-ride="false" data-interval="false"
+                data-pause="false">
+                <ol class="carousel-indicators">
+                    <li data-app-prevent-settings="" data-target="#slider1-o" class=" active" data-slide-to="0"></li>
+                    <li data-app-prevent-settings="" data-target="#slider1-o" data-slide-to="1"></li>
+                    <li data-app-prevent-settings="" data-target="#slider1-o" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item slider-fullscreen-image active" data-bg-video-slide="false"
+                        style="background-image: url(/assets/images/hitos.jpg);">
+                        <div class="container container-slide">
+                            <div class="image_wrapper">
+                                <div class="mbr-overlay"></div><img src="/static/assets/images/hitos.jpg" alt=""
+                                    title="">
+                                <div class="carousel-caption justify-content-center">
+                                    <div class="col-10 align-center">
+                                        <h2 class="mbr-fonts-style display-1" th:text="${hito1.fecha}"></h2>
+                                        <h2 class="mbr-fonts-style display-1" th:text="${hito1.nombre}"></h2>
+                                        <p class="lead mbr-text mbr-fonts-style display-5"
+                                            th:text="${hito1.descripcion}">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div th:if="${hito2!=null}" class="carousel-item slider-fullscreen-image"
+                        data-bg-video-slide="false" style="background-image: url(/assets/images/hitos.jpg);">
+                        <div class="container container-slide">
+                            <div class="image_wrapper">
+                                <div class="mbr-overlay"></div><img src="assets/images/hitos.jpg" alt="" title="">
+                                <div class="carousel-caption justify-content-center">
+                                    <!--div class="col-10 align-left"-->
+                                        <div class="col-10 align-center">
+                                            <h2 class="mbr-fonts-style display-1" th:text="${hito2.fecha}"></h2>
+                                            <h2 class="mbr-fonts-style display-1" th:text="${hito2.nombre}"></h2>
+                                            <p class="lead mbr-text mbr-fonts-style display-5"
+                                                th:text="${hito2.descripcion}">
+                                            </p>
+                                        </div>
+                                    <!--/div-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div th:if="${hito3!=null}" class="carousel-item slider-fullscreen-image"
+                        data-bg-video-slide="false" style="background-image: url(/assets/images/hitos.jpg);">
+                        <div class="container container-slide">
+                            <div class="image_wrapper">
+                                <div class="mbr-overlay"></div><img src="assets/images/hitos.jpg" alt="" title="">
+                                <div class="carousel-caption justify-content-center">
+                                    <!--div class="col-10 align-right"-->
+                                        <div class="col-10 align-center">
+                                            <h2 class="mbr-fonts-style display-1" th:text="${hito3.fecha}"></h2>
+                                            <h2 class="mbr-fonts-style display-1" th:text="${hito3.nombre}"></h2>
+                                            <p class="lead mbr-text mbr-fonts-style display-5"
+                                                th:text="${hito3.descripcion}">
+                                            </p>
+                                        </div>
+                                    <!--/div-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><a data-app-prevent-settings="" class="carousel-control carousel-control-prev" role="button"
+                    data-slide="prev" href="#slider1-o"><span aria-hidden="true"
+                        class="mbri-left mbr-iconfont"></span><span class="sr-only">Previous</span></a><a
+                    data-app-prevent-settings="" class="carousel-control carousel-control-next" role="button"
+                    data-slide="next" href="#slider1-o"><span aria-hidden="true"
+                        class="mbri-right mbr-iconfont"></span><span class="sr-only">Next</span></a>
+            </div>
+        </div>
+
+    </section>
+
+    <section th:if="${crear!=null}" class="mbr-section form1 cid-sdGyUfahTz" id="form1-r">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="title col-12 col-lg-8">
+                    <h2 class="mbr-section-title align-center pb-3 mbr-fonts-style display-2">
+                        Creación de hito</h2>
+                    <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">
+                        Recuerde ser claro en todos los aspectos para lograr una mejor información del hito</h3>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="media-container-column col-lg-8" data-form-type="formoid">
+                    <!---Formbuilder Form--->
+                    <form th:action="@{/hitos/creando}" method="POST"
+                        class="mbr-form form-with-styler" data-form-title="Mobirise Form" enctype="multipart/form-data">
+                    <input type="text" name="idcomunidad" th:value="${session.usuariosession.idcomunidad}" hidden>
+
+
+                        <input type="hidden" name="email" data-form-email="true"
+                            value="se9S17w24NNO5q+rbup6uiIXaPVcEMrim6o2lE6mQfwVvNeQfIobBYtXAuawAl9NegzPPHMDEXZxBeEqJXZP55KLmU8rl8QC6OL1X+xhyseVPssd1JqLkzwP2WigJ1zJ">
+                        <div class="row">
+                            <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for
+                                filling out the form!</div>
+                            <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
+                            </div>
+                        </div>
+
+
+                        <div class="dragArea row">
+                            <div class="col-md-4  form-group">
+                                <label for="fecha" class="form-control-label mbr-fonts-style display-7">Fecha</label>
+                                <input type="date" name="fecha" class="form-control display-7" min="2020-01-01"
+                                    max="2021-06-20" th:value="${fecha}">
+                            </div>
+
+                            <div class="col-md-4  form-group" data-for="name">
+                                <label for="nombre" class="form-control-label mbr-fonts-style display-7">Nombre</label>
+                                <input type="text" name="nombre" required="required" class="form-control display-7"
+                                    placeholder="Nombre del hito" th:value="${nombre}">
+                            </div>
+
+                            <div data-for="message" class="col-md-12 form-group">
+                                <label for="descripcion"
+                                    class="form-control-label mbr-fonts-style display-7">Descripción</label>
+                                <textarea name="descripcion" data-form-field="Message" class="form-control display-7"
+                                    placeholder="Descripción completa del proyecto"
+                                    th:value="${descripcion}"></textarea>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="foto">Foto</label>
+                                <input type="file" class="form-control" name="foto" th:value="${foto}">
+                            </div>
+
+                            <div class="col-md-12 input-group-btn align-center">
+                                <button type="submit" class="btn btn-primary btn-form display-4">Cargar
+                                    Hito</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!---Formbuilder Form--->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section th:if="${ver1!=null}" class="testimonials1 cid-sdRWzUxCfW" id="testimonials1-y">
+
+        <div class="container">
+
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6">
+                    <div class="image-wrapper">
+                        <img th:src="@{/load/hito.fotoInicio.id}" th:alt="${hito.fotoInicio.id}"
+                            th:title="${hito.fotoInicio.nombre}">
+                    </div>
+                </div>
+                <div class="col-12 col-md">
+                    <div class="text-wrapper">
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7" ><strong th:text="${hito.nombre}"></strong></p>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7" th:text="${hito.descripcion}"></p>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7" th:text="${hito.fecha}"></p>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7" th:text="${hito.comunidad.nombre}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section class="contacts4 cid-sdSyuoiMpf" id="contacts4-29" style="margin-top: 3cm;">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="text-content col-12 col-md-6">
+                    <h2 class="mbr-section-title mbr-fonts-style display-2">
+                        <strong>Seguinos en las redes!</strong></h2>
+                    <p class="mbr-text mbr-fonts-style display-7">
+                        <strong>Contacto</strong>:<br><strong>Dirección</strong>:<br><strong>Argentina/Chile<br></strong><br><br>
+                    </p>
+                </div>
+                <div class="icons d-flex align-items-center col-12 col-md-6 justify-content-end mt-md-0 mt-2 flex-wrap">
+                    <a href="https://twitter.com/mobirise" target="_blank">
+                        <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
+                    </a>
+                    <a href="https://www.facebook.com/pages/Mobirise/1616226671953247" target="_blank">
+                        <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+                    </a>
+                    <a href="https://www.youtube.com/c/mobirise" target="_blank">
+                        <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
+                    </a>
+                    <a href="https://instagram.com/mobirise" target="_blank">
+                        <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="/assets/web/assets/jquery/jquery.min.js"></script>
+    <script src="/assets/popper/popper.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/tether/tether.min.js"></script>
+    <script src="/assets/smoothscroll/smooth-scroll.js"></script>
+    <script src="/assets/dropdown/js/nav-dropdown.js"></script>
+    <script src="/assets/dropdown/js/navbar-dropdown.js"></script>
+    <script src="/assets/touchswipe/jquery.touch-swipe.min.js"></script>
+    <script src="/assets/ytplayer/jquery.mb.ytplayer.min.js"></script>
+    <script src="/assets/vimeoplayer/jquery.mb.vimeo_player.js"></script>
+    <script src="/assets/bootstrapcarouselswipe/bootstrap-carousel-swipe.js"></script>
+    <script src="/assets/as-pie-progress/jquery-as-pie-progress.min.js"></script>
+    <script src="/assets/datatables/jquery.data-tables.min.js"></script>
+    <script src="assets/datatables/data-tables.bootstrap4.min.js"></script>
+    <script src="assets/theme/js/script.js"></script>
+    <script src="/assets/slidervideo/script.js"></script>
+    <script src="assets/sociallikes/social-likes.js"></script>
+
+    
+</body>
+
+</html>

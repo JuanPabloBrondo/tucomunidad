@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Site made with Mobirise Website Builder v5.2.0, https://mobirise.com -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v5.2.0, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="assets/images/iconoprincipal-128x128.png" type="image/x-icon">
+    <meta name="description" content="Website Builder Description">
+
+
+    <title>Logueado</title>
+
+    <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+    <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+    <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="assets/tether/tether.min.css">
+    <link rel="stylesheet" href="assets/dropdown/css/style.css">
+    <link rel="stylesheet" href="assets/socicon/css/styles.css">
+    <link rel="stylesheet" href="assets/theme/css/style.css">
+    <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css">
+    <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+</head>
+
+<body>
+
+    <section th:replace="navbar::navbar"></section>
+
+    <section th:if="${info != null}" class="mbr-section content5 cid-sdGsm6Fg5L mbr-parallax-background"
+        id="content5-i">
+
+
+
+        <div class="container">
+            <div class="media-container-row">
+                <div class="title col-12 col-md-8">
+                    <h2 class="align-center mbr-bold mbr-white pb-3 mbr-fonts-style display-1"
+                        th:text="'Bienvenido al complejo'"></h2>
+                    <h2 class="align-center mbr-bold mbr-white pb-3 mbr-fonts-style display-1"
+                        th:text="${comunidad.nombre}"></h2>
+                    <h3 class="mbr-section-subtitle align-center mbr-light mbr-white pb-3 mbr-fonts-style display-5"
+                        th:text="${comunidad.ciudad} + ' - ' + ${comunidad.pais}">
+                    </h3>
+
+                    <!--FALTA EDITAR ENCABEZADO PAGINA!!!-->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section th:if="${listaproyectos == null}" style="margin-top: 3cm; text-align: center;">
+        <h1>NO HAY PROYECTOS PARA MOSTRAR</h1>
+    </section>
+
+    <section th:if="${listaproyectos!=null}" class="carousel slide cid-sdGtYgk36Q" data-interval="false" id="slider1-o">
+
+        <br>
+        <br>
+        <h1 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2">
+            <strong> Proyectos </strong></h1>
+
+        <div th:if="${proyecto1!=null}" class="full-screen">
+            <div class="mbr-slider slide carousel" data-keyboard="false" data-ride="false" data-interval="false"
+                data-pause="false">
+                <ol class="carousel-indicators">
+                    <li data-app-prevent-settings="" data-target="#slider1-o" class=" active" data-slide-to="0"></li>
+                    <li data-app-prevent-settings="" data-target="#slider1-o" data-slide-to="1"></li>
+                    <li data-app-prevent-settings="" data-target="#slider1-o" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item slider-fullscreen-image active" data-bg-video-slide="false"
+                        style="background-image: url(/assets/images/urbanismo.jpg);">
+                        <div class="container container-slide">
+                            <div class="image_wrapper">
+                                <div class="mbr-overlay"></div><img src="/static/assets/images/urbanismo.jpg" alt=""
+                                    title="">
+                                <div class="carousel-caption justify-content-center">
+                                    <div class="col-10 align-center">
+                                        <h2 class="mbr-fonts-style display-1" th:text="${proyecto1.nombre}"></h2>
+                                        <p class="lead mbr-text mbr-fonts-style display-5"
+                                            th:text="${proyecto1.descripcion}">
+                                        </p>
+                                        <p> <strong> Estado del proyecto</strong>
+                                        </p>
+                                        <h4 class="mbr-text mbr-fonts-style mb-4 display-7"
+                                            th:text="${proyecto1.estado}"></h4>
+                                        <div class="mbr-section-btn" buttons="0">
+                                            <a class="btn btn-success display-4"
+                                                th:href="@{/proyecto/__${session.usuariosession.idcomunidad}__/masinfo/__${proyecto1.id}__}">
+                                                +Info</a>
+                                            <a class="btn btn-white-outline display-4"
+                                                href="/votacion/votarProyecto">Votar!/Votacion</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div th:if="${proyecto2!=null}" class="carousel-item slider-fullscreen-image"
+                        data-bg-video-slide="false" style="background-image: url(/assets/images/img3.jpg);">
+                        <div class="container container-slide">
+                            <div class="image_wrapper">
+                                <div class="mbr-overlay"></div><img src="assets/images/img3.jpg" alt="" title="">
+                                <div class="carousel-caption justify-content-center">
+                                    <div class="col-10 align-left">
+                                        <div class="col-10 align-center">
+                                            <h2 class="mbr-fonts-style display-1" th:text="${proyecto2.nombre}"></h2>
+                                            <p class="lead mbr-text mbr-fonts-style display-5"
+                                                th:text="${proyecto2.descripcion}">
+                                            </p>
+                                            <p> <strong> Estado del proyecto</strong>
+                                            </p>
+                                            <h4 class="mbr-text mbr-fonts-style mb-4 display-7"
+                                                th:text="${proyecto2.estado}"></h4>
+                                            <div class="mbr-section-btn" buttons="0">
+                                                <a class="btn btn-success display-4"
+                                                    th:href="@{/proyecto/__${session.usuariosession.idcomunidad}__/masinfo/__${proyecto2.id}__}">
+                                                    +Info</a>
+                                                <a class="btn btn-white-outline display-4"
+                                                    href="/votacion/votarProyecto">Votar!/Votacion</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div th:if="${proyecto3!=null}" class="carousel-item slider-fullscreen-image"
+                        data-bg-video-slide="false" style="background-image: url(/assets/images/img4.jpg);">
+                        <div class="container container-slide">
+                            <div class="image_wrapper">
+                                <div class="mbr-overlay"></div><img src="assets/images/img4.jpg" alt="" title="">
+                                <div class="carousel-caption justify-content-center">
+                                    <div class="col-10 align-right">
+                                        <div class="col-10 align-center">
+                                            <h2 class="mbr-fonts-style display-1" th:text="${proyecto3.nombre}"></h2>
+                                            <p class="lead mbr-text mbr-fonts-style display-5"
+                                                th:text="${proyecto3.descripcion}">
+                                            </p>
+                                            <p> <strong> Estado del proyecto</strong>
+                                            </p>
+                                            <h4 class="mbr-text mbr-fonts-style mb-4 display-7"
+                                                th:text="${proyecto3.estado}"></h4>
+                                            <div class="mbr-section-btn" buttons="0">
+                                                <a class="btn btn-success display-4"
+                                                    th:href="@{/proyecto/__${session.usuariosession.idcomunidad}__/masinfo/__${proyecto3.id}__}">
+                                                    +Info</a>
+                                                <a class="btn btn-white-outline display-4"
+                                                    href="/votacion/votarProyecto">Votar!/Votacion</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><a data-app-prevent-settings="" class="carousel-control carousel-control-prev" role="button"
+                    data-slide="prev" href="#slider1-o"><span aria-hidden="true"
+                        class="mbri-left mbr-iconfont"></span><span class="sr-only">Previous</span></a><a
+                    data-app-prevent-settings="" class="carousel-control carousel-control-next" role="button"
+                    data-slide="next" href="#slider1-o"><span aria-hidden="true"
+                        class="mbri-right mbr-iconfont"></span><span class="sr-only">Next</span></a>
+            </div>
+        </div>
+
+    </section>
+
+    <section th:if="${listahitos == null}" style="margin-top: 3cm; text-align: center;">
+        <h1>NO HAY HITOS PARA MOSTRAR</h1>
+    </section>
+
+    <section th:if="${listahitos!=null}" class="carousel slide cid-sdGtYgk36Q" data-interval="false" id="slider2-o">
+
+
+
+        <div th:if="${hito1!=null}" class="full-screen">
+            <br>
+            <br>
+            <h1 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2">
+                <strong> Hitos </strong></h1>
+            <div class="mbr-slider slide carousel" data-keyboard="false" data-ride="false" data-interval="false"
+                data-pause="false">
+                <ol class="carousel-indicators">
+                    <li data-app-prevent-settings="" data-target="#slider2-o" class=" active" data-slide-to="0"></li>
+                    <li data-app-prevent-settings="" data-target="#slider2-o" data-slide-to="1"></li>
+                    <li data-app-prevent-settings="" data-target="#slider2-o" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item slider-fullscreen-image active" data-bg-video-slide="false" style="background-image: url(/assets/images/hitos.jpg);">
+                        <div class="container container-slide">
+                            <div class="image_wrapper">
+                                <div class="mbr-overlay"></div><img src="/static/assets/images/hitos.jpg" alt=""
+                                    title="">
+                                <div class="carousel-caption justify-content-center">
+                                    <div class="col-10 align-center">
+                                        <h2 class="mbr-fonts-style display-1" th:text="${hito1.nombre}"></h2>
+                                        <h2 class="mbr-fonts-style display-1" th:text="${hito1.fecha}"></h2>
+                                        <p class="lead mbr-text mbr-fonts-style display-5"
+                                            th:text="${hito1.descripcion}">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div th:if="${hito2!=null}" class="carousel-item slider-fullscreen-image" data-bg-video-slide="false" style="background-image: url(/assets/images/hitos.jpg);">
+                        <div class="container container-slide">
+                            <div class="image_wrapper">
+                                <div class="mbr-overlay"></div><img src="assets/images/hitos.jpg" alt="" title="">
+                                <div class="carousel-caption justify-content-center">
+                                    <!--div class="col-10 align-left"-->
+                                        <div class="col-10 align-center">
+                                            <h2 class="mbr-fonts-style display-1" th:text="${hito2.nombre}"></h2>
+                                            <h2 class="mbr-fonts-style display-1" th:text="${hito2.fecha}"></h2>
+                                            <p class="lead mbr-text mbr-fonts-style display-5"
+                                                th:text="${hito2.descripcion}">
+                                            </p>
+                                        </div>
+                                    <!--/div-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div th:if="${hito3!=null}" class="carousel-item slider-fullscreen-image"
+                        data-bg-video-slide="false" style="background-image: url(/assets/images/hitos.jpg);">
+                        <div class="container container-slide">
+                            <div class="image_wrapper">
+                                <div class="mbr-overlay"></div><img src="assets/images/hitos.jpg" alt="" title="">
+                                <div class="carousel-caption justify-content-center">
+                                    <!--div class="col-10 align-right"-->
+                                        <div class="col-10 align-center">
+                                            <h2 class="mbr-fonts-style display-1" th:text="${hito3.nombre}"></h2>
+                                            <h2 class="mbr-fonts-style display-1" th:text="${hito3.fecha}"></h2>
+                                            <p class="lead mbr-text mbr-fonts-style display-5"
+                                                th:text="${hito3.descripcion}">
+                                            </p>
+                                        </div>
+                                    <!--/div-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><a data-app-prevent-settings="" class="carousel-control carousel-control-prev" role="button"
+                    data-slide="prev" href="#slider2-o"><span aria-hidden="true"
+                        class="mbri-left mbr-iconfont"></span><span class="sr-only">Previous</span></a><a
+                    data-app-prevent-settings="" class="carousel-control carousel-control-next" role="button"
+                    data-slide="next" href="#slider2-o"><span aria-hidden="true"
+                        class="mbri-right mbr-iconfont"></span><span class="sr-only">Next</span></a>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="features12 cid-sdS2h1rMNA" id="features13-17">
+
+        <br>
+        <h1 class="mbr-section-title mbr-fonts-style align-center pb-3 display-2">
+            <strong> Oficios </strong></h1>
+        <br>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-6">
+                    <div class="card-wrapper">
+                        <div class="card-box align-left">
+                            <h4 class="card-title mbr-fonts-style mb-4 display-2"><strong>Colabora con la
+                                    comunidad</strong></h4>
+                            <p class="mbr-text mbr-fonts-style mb-4 display-7">
+                                Desde "Tu Comunidad" incentivamos la cooperación y les damos herramientas para que se
+                                lleve a cabo, por eso les damos espacio a cargar gente confiable que realice oficios de
+                                todo tipo</p>
+                            <div class="mbr-section-btn">
+                                <a class="btn btn-primary display-4"
+                                    th:href="@{/oficio/${session.usuariosession.idcomunidad}}">Creá un oficio</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="item mbr-flex">
+                        <div class="icon-box">
+                            <span class="mbr-iconfont mbri-search"></span>
+                        </div>
+                        <div class="text-box">
+                            <a th:href="@{/oficio/__${session.usuariosession.idcomunidad}__/}"
+                                class="icon-title mbr-black mbr-fonts-style display-7"
+                                style="color: black!important;"><strong>Encontrá trabajadores de oficio que
+                                    necesitas</strong></a>
+                            <h5 class="icon-text mbr-black mbr-fonts-style display-4">Busca en la red de trabajadores
+                                sustentada por la propia gente de la comunidad.</h5>
+                        </div>
+                    </div>
+                    <div class="item mbr-flex">
+                        <div class="icon-box">
+                            <span class="mbr-iconfont mbrib-star"></span>
+                        </div>
+                        <div class="text-box">
+                            <a th:href="@{/oficio/__${session.usuariosession.idcomunidad}__/}"
+                                class="icon-title mbr-black mbr-fonts-style display-7"
+                                style="color: black!important;"><strong>Valora el
+                                    trabajo</strong></a>
+                            <h5 class="icon-text mbr-black mbr-fonts-style display-4">Califica a los trabajadores de
+                                oficio que están en la página.</h5>
+                        </div>
+
+                    </div>
+                    <div class="item mbr-flex">
+                        <div class="icon-box">
+                            <span class="mbr-iconfont mobi-mbri-user-2 mobi-mbri"></span>
+                        </div>
+                        <div class="text-box">
+                            <a th:href="@{/oficio/__${session.usuariosession.idcomunidad}__/}"
+                                class="icon-title mbr-black mbr-fonts-style display-7" style="color: black!important;">
+                                <strong>Carga trabajadores de oficio de confianza</strong></a>
+                            <h5 class="icon-text mbr-black mbr-fonts-style display-4">Extende la red de contactos de la
+                                comunidad y beneficia a los trabajadores que se esfuerzan y desempeñan bien.</h5>
+                        </div>
+                        <div class="text-box">
+                            <h4 class="icon-title mbr-black mbr-fonts-style display-7">
+                                <strong></strong></h4>
+                            <h5 class="icon-text mbr-black mbr-fonts-style display-4"></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contacts4 cid-sdSyuoiMpf" id="contacts4-29" style="margin-top: 3cm;">
+
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="text-content col-12 col-md-6">
+                    <h2 class="mbr-section-title mbr-fonts-style display-2">
+                        <strong>Seguinos en las redes!</strong></h2>
+                    <p class="mbr-text mbr-fonts-style display-7">
+                        <strong>Contacto</strong>:<br><strong>Dirección</strong>:<br><strong>Argentina/Chile<br></strong><br><br>
+                    </p>
+                </div>
+                <div class="icons d-flex align-items-center col-12 col-md-6 justify-content-end mt-md-0 mt-2 flex-wrap">
+                    <a href="https://twitter.com/mobirise" target="_blank">
+                        <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
+                    </a>
+                    <a href="https://www.facebook.com/pages/Mobirise/1616226671953247" target="_blank">
+                        <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+                    </a>
+                    <a href="https://www.youtube.com/c/mobirise" target="_blank">
+                        <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
+                    </a>
+                    <a href="https://instagram.com/mobirise" target="_blank">
+                        <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section
+        style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;">
+        <a href="https://mobirise.site/w" style="flex: 1 1; height: 3rem; padding-left: 1rem;"></a>
+        <!--p style="flex: 0 0 auto; margin:0; padding-right:1rem;">Web page <a href="https://mobirise.site/f"
+                    style="color:#aaa;">was created</a> with Mobirise</p-->
+    </section>
+    <script src="assets/web/assets/jquery/jquery.min.js"></script>
+    <script src="assets/popper/popper.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/tether/tether.min.js"></script>
+    <script src="assets/smoothscroll/smooth-scroll.js"></script>
+    <script src="assets/dropdown/js/nav-dropdown.js"></script>
+    <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+    <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+    <script src="assets/sociallikes/social-likes.js"></script>
+    <script src="assets/theme/js/script.js"></script>
+    <script src="assets/formoid/formoid.min.js"></script>
+
+</body>
+
+</html>

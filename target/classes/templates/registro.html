@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+
+    <!-- Site made with Mobirise Website Builder v5.2.0, https://mobirise.com -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v5.2.0, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="/resources/static/assets/images/iconoprincipal-128x128.png" type="image/x-icon">
+    <meta name="description" content="Página de registro">
+
+
+    <title>Registro</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/assets/tether/tether.min.css">
+    <link rel="stylesheet" href="/assets/dropdown/css/style.css">
+    <link rel="stylesheet" href="/assets/formstyler/jquery.formstyler.css">
+    <link rel="stylesheet" href="/assets/formstyler/jquery.formstyler.theme.css">
+    <link rel="stylesheet" href="/assets/datepicker/jquery.datetimepicker.min.css">
+    <link rel="stylesheet" href="/assets/socicon/css/styles.css">
+    <link rel="stylesheet" href="/assets/theme/css/style.css">
+    <link rel="preload" as="style" href="/assets/mobirise/css/mbr-additional.css">
+    <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
+
+    <script src="https://kit.fontawesome.com/893bee3809.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+
+
+    <section th:replace="navbar::navbar"></section>
+
+
+    <section th:if="${eleccion != null}" class="form7 cid-sdGg0qGaTQ" id="form7-6">
+
+
+        <div th:if="${vivienda!= null}" class="container">
+            <div class="mbr-section-head">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
+                    <strong>Registro</strong></h3>
+                <strong>
+                    <p th:if="${error != null}" th:text="${error}" style="color:red"></p>
+                </strong>
+            </div>
+
+            <div class="row justify-content-center mt-4">
+                <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
+                    <form th:action="@{/registro}" method="POST" class="mbr-form form-with-styler mx-auto"
+                        data-form-title="Form Name" enctype="multipart/form-data">
+                        
+                        <input type="hidden" name="email" data-form-email="true"
+                            value="sKHBnp1d6HplbnZ+1sYF9JqjWQakUK2MJTIY+l6zxkqLW2Bk5sqQOPzLx3VoAjba6fHq+Zn16XxIeaN0wvp/yENmr2ni3jDw0P9w7LV5oXLstgC7hGiIPkbCG+qcsi9x">
+                        <p class="mbr-text mbr-fonts-style align-center mb-4 display-7">
+                            Registrate de manera sencilla y comenzá a disfrutar</p>
+                        <input type="text" name="idcomunidad" th:value="idComunidad" hidden>
+                        <div class="dragArea row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="nombre">
+                                <input type="text" name="nombre" placeholder="Nombre" data-form-field="nombre"
+                                    class="form-control" th:value="${nombre}" id="nombre">
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="apellido">
+                                <input type="text" name="apellido" placeholder="Apellido" data-form-field="apellido"
+                                    class="form-control" th:value="${apellido}" id="apellido">
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="mail">
+                                <input type="email" name="mail" placeholder="Mail" data-form-field="mail"
+                                    class="form-control" th:value="${mail}" id="mail">
+                            </div>
+
+                            <div data-for="clave1" class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                <input type="password" name="clave1" placeholder="Clave" data-form-field="clave1"
+                                    class="form-control" th:value="${clave1}" id="clave1">
+                            </div>
+
+                            <div data-for="clave2" class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                <input type="password" name="clave2" placeholder="Repetir clave"
+                                    data-form-field="clave2" class="form-control" th:value="${clave2}" id="clave2">
+                            </div>
+
+                            <div data-for="telefono" class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                <input type="telefono" name="telefono" placeholder="Telefono" data-form-field="telefono"
+                                    class="form-control" th:value="${telefono}" id="telefono">
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="idVivienda">
+                                <select class="form-control" name="idVivienda">
+                                    <option th:each="vivienda : ${viviendas}" th:value="${vivienda.id}"
+                                        th:text="${vivienda.direccion}">
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div data-for="claveVivienda" class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                <input type="password" name="claveVivienda" placeholder="Clave Vivienda"
+                                    data-form-field="claveVivienda" class="form-control" th:value="${claveVivienda}"
+                                    id="claveVivienda">
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                <label for="foto">Foto</label>
+                                <input type="file" class="form-control" name="foto">
+                            </div>
+                            <div class="col-auto mbr-section-btn align-center">
+                                <button type="submit" class="btn btn-primary display-4">Registrarse</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div th:if="${comunidad != null}" class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="idComunidad">
+            <div class="container">
+                <table class="table table-sm" style="width: 70%">
+                    <h2 style="padding: 20px;">Comunidades</h2>
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Elegir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="comunidad : ${comunidades}">
+                            <td th:text="${comunidad.nombre}"></td>
+                            <td><a th:href="@{/registro/__${comunidad.id}__}"> <i class="fas fa-pen"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section th:if="${editar != null}" class="form7 cid-sdSxcPZv5i" id="form7-27">
+
+
+        <div class="container">
+            <div class="mbr-section-head">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
+                    <strong>Editar perfil</strong></h3>
+
+            </div>
+            <div class="row justify-content-center mt-4">
+                <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
+                    <form th:action="@{/registro/editarPerfil}" method="POST" class="mbr-form form-with-styler mx-auto"
+                        data-form-title="Form Name" enctype="multipart/form-data">
+                        <input type="hidden" name="email" data-form-email="true"
+                            value="EIrAnH4HkgN3m7uRafiLF4ls+ny0lH0mDWNByHXPQkVqG0S0kNTvpmskSMfNcnoDu2ezybxua7ktGgES2Sh9Fc+m1J+WmnKpAvsnvM8+8/OP51vPAKao0luXFhUauDIV">
+                        <p th:if="${error != null}" th:text="${error}" style="color:red"></p>
+
+                        <p class="mbr-text mbr-fonts-style align-center mb-4 display-7">
+                            Modifique sus datos de perfil.
+                        </p>
+                        <div class="">
+                            <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for
+                                filling
+                                out the form!</div>
+                            <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Oops...!
+                                some
+                                problem!</div>
+                        </div>
+                        <div class="dragArea row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="nombre">
+                                <input type="text" name="nombre" placeholder="Nombre" data-form-field="nombre"
+                                    class="form-control" th:value="${usuario.nombre}" id="nombre" readonly>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="apellido">
+                                <input type="text" name="apellido" placeholder="Apellido" data-form-field="apellido"
+                                    class="form-control" th:value="${usuario.apellido}" id="apellido" readonly>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="mail">
+                                <input type="email" name="mail" placeholder="Mail" data-form-field="mail"
+                                    class="form-control" th:value="${usuario.mail}" id="mail" readonly>
+                            </div>
+
+                            <div data-for="clave" class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                <input type="clave" name="clave1" placeholder="Clave Nueva" data-form-field="clave"
+                                    class="form-control" th:value="${clave}" id="clave">
+                            </div>
+
+                            <div data-for="clave2" class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                <input type="clave2" name="clave2" placeholder="Repetir Clave Nueva"
+                                    data-form-field="clave2" class="form-control" th:value="${clave2}" id="clave2">
+                            </div>
+
+                            <div data-for="telefono" class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                <label>Telefono</label>
+                                <input type="telefono" name="telefono" placeholder="Telefono" data-form-field="telefono"
+                                    class="form-control" th:value="${usuario.telefono}" id="telefono">
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="idVivienda">
+                                <label>Vivienda Actual</label>
+                                <input type="vivienda" name="vivienda" class="form-control"
+                                    th:value="${usuario.vivienda.direccion}" id="telefono" readonly>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="idVivienda">
+                                <label>Vivienda Nueva</label>
+                                <select class="form-control" name="idVivienda">
+                                    <option th:value="${usuario.vivienda.id}" selected="selected">
+                                        Sin Cambio
+                                    </option>
+                                    <option th:each="vivienda : ${viviendas}" th:value="${vivienda.id}"
+                                        th:text="${vivienda.direccion}" readonly>
+                                    </option>
+
+                                </select>
+                            </div>
+
+                            <div data-for="claveVivienda" class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                <label>Clave Vivienda </label>
+                                <p>(Si no cambia de vivienda deje la clave actual que es la de su vivienda actual)</p>
+                                <input type="claveVivienda" name="claveVivienda" placeholder="Clave Vivienda Nueva"
+                                    data-form-field="claveVivienda" class="form-control"
+                                    th:value="${usuario.vivienda.claveVivienda}" id="claveVivienda">
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                <label for="foto">Foto</label>
+                                <input type="file" class="form-control" name="foto" th:value="${foto}">
+                            </div>
+
+                            <div class="col-auto mbr-section-btn align-center">
+                                <button type="submit" class="btn btn-primary display-4">Editar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="contacts4 cid-sdSyuoiMpf" id="contacts4-29">
+
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="text-content col-12 col-md-6">
+                    <h2 class="mbr-section-title mbr-fonts-style display-2">
+                        <strong>Seguinos en las redes!</strong></h2>
+                    <p class="mbr-text mbr-fonts-style display-7">
+                        <strong>Contacto</strong>:<br><strong>Dirección</strong>:<br><strong>Argentina/Chile<br></strong><br><br>
+                    </p>
+                </div>
+                <div class="icons d-flex align-items-center col-12 col-md-6 justify-content-end mt-md-0 mt-2 flex-wrap">
+                    <a href="https://twitter.com/mobirise" target="_blank">
+                        <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
+                    </a>
+                    <a href="https://www.facebook.com/pages/Mobirise/1616226671953247" target="_blank">
+                        <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+                    </a>
+                    <a href="https://www.youtube.com/c/mobirise" target="_blank">
+                        <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
+                    </a>
+                    <a href="https://instagram.com/mobirise" target="_blank">
+                        <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section
+        style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;">
+        <a href="https://mobirise.site/w" style="flex: 1 1; height: 3rem; padding-left: 1rem;"></a>
+        <p style="flex: 0 0 auto; margin:0; padding-right:1rem;">Web page <a href="https://mobirise.site/f"
+                style="color:#aaa;">was created</a> with Mobirise</p>
+    </section>
+    <script src="/assets/web/assets/jquery/jquery.min.js"></script>
+    <script src="/assets/popper/popper.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/tether/tether.min.js"></script>
+    <script src="/assets/smoothscroll/smooth-scroll.js"></script>
+    <script src="/assets/dropdown/js/nav-dropdown.js"></script>
+    <script src="/assets/dropdown/js/navbar-dropdown.js"></script>
+    <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+    <script src="assets/sociallikes/social-likes.js"></script>
+    <script src="assets/theme/js/script.js"></script>
+
+
+</body>
+
+</html>
